@@ -10,7 +10,7 @@ body {
   align-items: center;
   padding: 20px;
   background: #0171d3;
-  height: 88.5vh;
+  height: 88.3vh !important;
 }
 
 .signup-container {
@@ -69,6 +69,7 @@ button:disabled {
   .main-container {
     padding: 12px;
     background: #0171d3;
+    height: 88vh;
   }
 
   .signup-container {

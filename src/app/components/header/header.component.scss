@@ -3,9 +3,10 @@
   justify-content: space-between;
   align-items: center;
   color: #0171d3;
-  height: 70px !important;
+  height: 72px !important;
   background: #fff;
   position: fixed;
+  top: 0px;
   width: 100%;
   border-bottom: 1px solid #0171d3;
 }
@@ -14,7 +15,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 70px !important;
+  height: 72px !important;
   color: #0171d3;
   background: #fff;
 }
@@ -71,6 +72,6 @@
   }
 
   .logout-logo {
-    margin: 5px 10px 0 10px;
+    margin: 5px 10px 0 10px !important;
   }
 }

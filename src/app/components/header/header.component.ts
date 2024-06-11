@@ -32,10 +32,11 @@ export class HeaderComponent {
       if (res.statusCode === 200) {
         this.authService.userDetails.next({});
         this.authService.isUserLoggedIn.next(false);
+        this.isUserloggedIn = false;
         this.router.navigate(['/login']);
-        this.toasterService.success('Logout successful.');
+        this.toasterService.success(res.message);
       } else {
-        this.toasterService.error('Failed to logout.');
+        this.toasterService.error(res.message);
       }
     });
   }

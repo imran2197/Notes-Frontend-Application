@@ -1,0 +1,105 @@
+.note_container {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px dotted;
+  background: #fff;
+
+  #icon {
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+    padding: 10px;
+    background-color: #0171d3;
+    color: #fff;
+    border-radius: 50%;
+  }
+
+  .note_item {
+    width: 100%;
+  }
+
+  .save_button,
+  .cancel_button {
+    display: flex;
+    margin: 5px;
+    background-color: #0171d3;
+    color: #fff;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 5px;
+
+    img {
+      width: 20px;
+      margin-right: 10px;
+    }
+  }
+
+  .cancel_button {
+    background-color: #c70000;
+    color: #fff;
+  }
+}
+
+.editModeBtns {
+  display: flex;
+}
+
+.single-note-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.editIcon {
+  width: 30px;
+  margin: 0px 10px 14px 10px;
+  cursor: pointer;
+}
+
+.deleteIcon {
+  width: 40px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+input {
+  width: 95%;
+  margin: 5px;
+}
+
+textarea {
+  margin: 5px;
+  height: 100px !important;
+  min-width: 95% !important;
+  min-height: 100px !important;
+}
+
+input,
+textarea {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 10px 15px;
+  outline: none;
+}
+
+@media only screen and (max-width: 750px) {
+  .buttons {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .editIcon {
+    margin: 0px 10px 0px 10px !important;
+  }
+
+  input,
+  textarea {
+    width: 82% !important;
+    min-width: 82% !important;
+    margin: 5px;
+  }
+}

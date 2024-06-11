@@ -16,3 +16,17 @@
     </button>
   </div>
 </div>
+<div *ngIf="notesData.length > 0">
+  <ng-container *ngFor="let item of notesData">
+    <app-note-item
+      [item]="item"
+      (updateNotesDataEmitter)="updateNotesDataEmitter()"
+    ></app-note-item>
+  </ng-container>
+</div>
+<img
+  *ngIf="notesData.length === 0"
+  class="no-data"
+  alt="No Data"
+  src="../../../assets/images/nodata.jpg"
+/>

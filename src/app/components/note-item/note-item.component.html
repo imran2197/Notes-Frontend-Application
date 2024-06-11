@@ -1,0 +1,54 @@
+<div class="note_container">
+  <img
+    src="../../../assets/images/message.png"
+    id="icon"
+    alt="Note Message Logo"
+  />
+  <div class="note_item">
+    <div *ngIf="isEditModeEnabled">
+      <input type="text" placeholder="Edit Title" [(ngModel)]="item.title" />
+      <textarea
+        type="text"
+        placeholder="Edit Description"
+        [(ngModel)]="item.description"
+      ></textarea>
+      <div class="editModeBtns">
+        <button class="cancel_button" (click)="isEditModeEnabled = false">
+          Cancel
+        </button>
+        <button
+          class="save_button"
+          (click)="onSaveItem()"
+          [disabled]="
+            item.title.trim().length === 0 ||
+            item.description.trim().length === 0
+          "
+        >
+          <img src="../../../assets/images/save.png" alt="Save Logo" />
+          Save
+        </button>
+      </div>
+    </div>
+
+    <div class="single-note-container" *ngIf="!isEditModeEnabled">
+      <div class="notesData">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.description }}</p>
+      </div>
+      <div class="buttons">
+        <img
+          class="editIcon"
+          alt="Edit Logo"
+          src="../../../assets/images/edit.png"
+          (click)="isEditModeEnabled = true"
+        />
+        <img
+          class="deleteIcon"
+          alt="Delete Logo"
+          src="../../../assets/images/delete.png"
+          (click)="onDeleteItem()"
+        />
+      </div>
+    </div>
+  </div>
+</div>

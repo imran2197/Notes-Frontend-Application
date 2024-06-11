@@ -1,6 +1,5 @@
 .main {
   margin-top: 70px;
-  position: absolute;
   background-color: #0171d3;
   display: flex;
   justify-content: center;
@@ -66,7 +65,17 @@ textarea {
   font-size: 22px;
 }
 
+.no-data {
+  height: 750px;
+  width: 100%;
+  object-fit: contain;
+}
+
 @media only screen and (max-width: 750px) {
+  .main {
+    width: 101.5%;
+  }
+
   input,
   textarea,
   .submit {
@@ -93,5 +102,11 @@ textarea {
     min-height: 100px !important;
     padding-left: 10px !important;
     margin-left: 10px !important;
+  }
+
+  .no-data {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
   }
 }

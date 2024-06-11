@@ -12,7 +12,6 @@ import { AuthService } from './services/auth.service';
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
-  title = 'testing';
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
