@@ -12,7 +12,7 @@ export class AuthService {
   userDetails = new BehaviorSubject({});
 
   constructor(private http: HttpClient) {
-    if (!isLocalEnv) {
+    if (!isLocalEnv()) {
       this.baseUrl =
         'https://notes-backend-application-50a7671c7b2e.herokuapp.com';
     } else {
