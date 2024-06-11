@@ -1,0 +1,22 @@
+<div [ngClass]="isUserloggedIn ? 'header-container1' : 'header-container2'">
+  <h1 class="heading">
+    <img src="../../../assets/images/notesLogo.png" alt="Notes Logo" />
+    Notes
+  </h1>
+  <div class="userDetails" *ngIf="userDetails?.name">
+    <img
+      class="profile-logo"
+      alt="Profile Logo"
+      title="Profile"
+      src="../../../assets/images/user-profile.png"
+    />
+    <h1>Imran</h1>
+    <img
+      class="logout-logo"
+      alt="Logout Logo"
+      title="Logout"
+      src="../../../assets/images/logout.png"
+      (click)="logout()"
+    />
+  </div>
+</div>

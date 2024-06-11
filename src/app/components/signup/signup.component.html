@@ -1,0 +1,38 @@
+<div class="main-container">
+  <div class="signup-container">
+    <h1>Login</h1>
+    <form [formGroup]="signupForm">
+      <input
+        type="text"
+        placeholder="Name"
+        formControlName="name"
+        class="form-control"
+      />
+      <input
+        type="text"
+        placeholder="Username"
+        formControlName="userName"
+        class="form-control"
+      />
+      <input
+        type="text"
+        placeholder="Email"
+        formControlName="email"
+        class="form-control"
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+        class="form-control"
+      />
+      <button (click)="onSignup()" [disabled]="signupForm.invalid">
+        Signup
+      </button>
+    </form>
+    <div class="loginOrSignupText">
+      Don't have an account?
+      <span (click)="redirectToLogin()"> Login </span>
+    </div>
+  </div>
+</div>

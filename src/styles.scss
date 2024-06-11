@@ -1,1 +1,81 @@
-/* You can add global styles to this file, and also import other style files */
+@import "ngx-toastr/toastr";
+
+body {
+  margin: 0px;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: #0171d3;
+  height: 88.5vh;
+}
+
+.signup-container {
+  text-align: center;
+  margin: auto;
+  padding: 10px 0px;
+  background: #fff;
+  width: 700px;
+  border-radius: 15px;
+
+  h1 {
+    font-size: 50px;
+  }
+
+  input {
+    width: 85%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin: 10px 0px;
+    outline: none;
+  }
+
+  button {
+    display: block;
+    margin: 25px auto;
+    border: none;
+    outline: none;
+    width: 50%;
+    height: 50px;
+    cursor: pointer;
+    background: #0171d3;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 22px;
+  }
+}
+
+.loginOrSignupText {
+  font-size: 22px !important;
+  margin-bottom: 20px;
+
+  span {
+    color: #0171d3;
+    padding-left: 15px;
+    cursor: pointer;
+  }
+}
+
+button:disabled {
+  cursor: not-allowed !important;
+  opacity: 0.7;
+}
+
+@media only screen and (max-width: 750px) {
+  .main-container {
+    padding: 12px;
+    background: #0171d3;
+  }
+
+  .signup-container {
+    width: 100%;
+
+    h1 {
+      font-size: 30px;
+    }
+  }
+}
