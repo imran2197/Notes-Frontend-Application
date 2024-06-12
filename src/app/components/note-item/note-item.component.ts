@@ -15,6 +15,7 @@ export class NoteItemComponent {
   isEditModeEnabled: Boolean = false;
   @Input() item: any;
   @Output() updateNotesDataEmitter = new EventEmitter<any>();
+  @Output() isLoadingEmitter = new EventEmitter<any>();
 
   constructor(
     private noteService: NotesService,
@@ -24,6 +25,7 @@ export class NoteItemComponent {
   ngOnInit() {}
 
   onSaveItem() {
+    this.isLoadingEmitter.emit(true);
     const payload = {
       title: this.item.title,
       description: this.item.description,
@@ -35,6 +37,7 @@ export class NoteItemComponent {
           this.toasterService.success(res.message);
           this.isEditModeEnabled = false;
           this.updateNotesDataEmitter.emit();
+          this.isLoadingEmitter.emit(false);
         } else {
           this.toasterService.error(res.message);
         }
@@ -42,10 +45,12 @@ export class NoteItemComponent {
   }
 
   onDeleteItem() {
+    this.isLoadingEmitter.emit(true);
     this.noteService.deleteNotes(this.item._id).subscribe((res: any) => {
       if (res.statusCode === 200) {
         this.toasterService.success(res.message);
         this.updateNotesDataEmitter.emit();
+        this.isLoadingEmitter.emit(false);
       } else {
         this.toasterService.error(res.message);
       }

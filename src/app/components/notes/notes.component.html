@@ -32,6 +32,7 @@
     <app-note-item
       [item]="item"
       (updateNotesDataEmitter)="updateNotesDataEmitter()"
+      (isLoadingEmitter)="isLoadingEmitter($event)"
     ></app-note-item>
   </ng-container>
 </div>

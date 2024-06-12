@@ -48,6 +48,10 @@ export class NotesComponent {
     this.getAllNotes();
   }
 
+  isLoadingEmitter(value: any) {
+    this.isLoading = value;
+  }
+
   handleSubmit() {
     this.isLoading = true;
     const payload = {
