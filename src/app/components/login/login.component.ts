@@ -51,13 +51,13 @@ export class LoginComponent {
     this.isLoading = true;
     this.authService.login(this.loginForm.value).subscribe(async (res) => {
       if (res.statusCode === 200) {
-        this.getUserDetails();
-        this.isLoading = true;
+        await this.getUserDetails();
         this.toasterService.success(res.message);
         this.router.navigate(['/notes']);
       } else {
         this.toasterService.error(res.message);
       }
+      this.isLoading = false;
     });
   }
 

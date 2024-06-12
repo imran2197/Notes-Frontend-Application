@@ -37,10 +37,10 @@ export class NoteItemComponent {
           this.toasterService.success(res.message);
           this.isEditModeEnabled = false;
           this.updateNotesDataEmitter.emit();
-          this.isLoadingEmitter.emit(false);
         } else {
           this.toasterService.error(res.message);
         }
+        this.isLoadingEmitter.emit(false);
       });
   }
 
@@ -50,10 +50,10 @@ export class NoteItemComponent {
       if (res.statusCode === 200) {
         this.toasterService.success(res.message);
         this.updateNotesDataEmitter.emit();
-        this.isLoadingEmitter.emit(false);
       } else {
         this.toasterService.error(res.message);
       }
+      this.isLoadingEmitter.emit(false);
     });
   }
 }

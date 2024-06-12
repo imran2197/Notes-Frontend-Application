@@ -56,11 +56,11 @@ export class SignupComponent {
     this.authService.signup(this.signupForm.value).subscribe((res) => {
       if (res.statusCode === 201) {
         this.toasterService.success(res.message);
-        this.isLoading = false;
         this.router.navigate(['login']);
       } else {
         this.toasterService.error(res.message);
       }
+      this.isLoading = false;
     });
   }
 
