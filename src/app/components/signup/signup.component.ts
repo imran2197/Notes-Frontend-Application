@@ -20,6 +20,7 @@ import { ToasterService } from '../../services/toastr.service';
   styleUrl: './signup.component.scss',
 })
 export class SignupComponent {
+  isLoading: Boolean = false;
   signupForm: FormGroup = new FormGroup({
     name: new FormControl(''),
     email: new FormControl(''),
@@ -51,9 +52,11 @@ export class SignupComponent {
   }
 
   onSignup() {
+    this.isLoading = true;
     this.authService.signup(this.signupForm.value).subscribe((res) => {
       if (res.statusCode === 201) {
         this.toasterService.success(res.message);
+        this.isLoading = false;
         this.router.navigate(['login']);
       } else {
         this.toasterService.error(res.message);

@@ -13,6 +13,7 @@ import { ToasterService } from '../../services/toastr.service';
   styleUrl: './notes.component.scss',
 })
 export class NotesComponent {
+  isLoading: Boolean = false;
   title: String = '';
   description: String = '';
 
@@ -27,9 +28,11 @@ export class NotesComponent {
   }
 
   getAllNotes() {
+    this.isLoading = true;
     this.noteService.getAllNotes().subscribe((res: any) => {
       console.log(res);
       this.notesData = res.response;
+      this.isLoading = false;
     });
   }
 
@@ -38,6 +41,7 @@ export class NotesComponent {
   }
 
   handleSubmit() {
+    this.isLoading = true;
     const payload = {
       title: this.title,
       description: this.description,

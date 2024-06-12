@@ -1,3 +1,17 @@
+.loader-container {
+  position: absolute;
+  width: 101.5%;
+  height: 101.5%;
+  background: #00284080;
+  margin-top: -70px;
+
+  .loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+}
+
 .main {
   margin-top: 70px;
   background-color: #0171d3;
