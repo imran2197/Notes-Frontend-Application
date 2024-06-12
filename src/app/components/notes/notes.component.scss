@@ -84,7 +84,12 @@ textarea {
 
 @media only screen and (max-width: 750px) {
   .main {
-    width: 101.5%;
+    width: 100%;
+  }
+
+  .note-items-container {
+    height: 36vh;
+    overflow: auto;
   }
 
   input,
