@@ -19,8 +19,16 @@
     </button>
   </div>
 </div>
-<div *ngIf="notesData.length > 0">
-  <ng-container *ngFor="let item of notesData">
+<div class="search">
+  <input
+    type="text"
+    placeholder="Search by title..."
+    [(ngModel)]="search"
+    (ngModelChange)="onSearch()"
+  />
+</div>
+<div *ngIf="notesData.length > 0" class="note-items-container">
+  <ng-container *ngFor="let item of filteredNotesData">
     <app-note-item
       [item]="item"
       (updateNotesDataEmitter)="updateNotesDataEmitter()"

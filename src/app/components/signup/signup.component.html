@@ -1,6 +1,8 @@
+<div class="loader-container" *ngIf="isLoading">
+  <div class="loader"></div>
+</div>
 <div class="main-container">
-  <div class="loader" *ngIf="isLoading"></div>
-  <div class="signup-container" *ngIf="!isLoading">
+  <div class="signup-container">
     <h1>Signup</h1>
     <form [formGroup]="signupForm">
       <input

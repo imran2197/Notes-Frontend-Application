@@ -16,8 +16,10 @@ export class NotesComponent {
   isLoading: Boolean = false;
   title: String = '';
   description: String = '';
+  search: String = '';
 
   notesData: any = [];
+  filteredNotesData: any = [];
 
   constructor(
     private noteService: NotesService,
@@ -30,9 +32,15 @@ export class NotesComponent {
   getAllNotes() {
     this.isLoading = true;
     this.noteService.getAllNotes().subscribe((res: any) => {
-      console.log(res);
       this.notesData = res.response;
+      this.filteredNotesData = JSON.parse(JSON.stringify(this.notesData));
       this.isLoading = false;
+    });
+  }
+
+  onSearch() {
+    this.filteredNotesData = this.notesData.filter((item: any) => {
+      return item.title.toLowerCase().includes(this.search.toLowerCase());
     });
   }
 
