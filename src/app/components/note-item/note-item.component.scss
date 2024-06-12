@@ -53,16 +53,32 @@
   align-items: center;
 }
 
-.editIcon {
+.editIcon,
+.inprogressIcon {
   width: 30px;
-  margin: 0px 10px 14px 10px;
+  margin: 0px 10px 0px 10px;
   cursor: pointer;
 }
 
 .deleteIcon {
   width: 40px;
-  margin: 10px;
+  margin: 0px 15px 0 5px;
   cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+}
+
+.reopen {
+  background-color: #0171d3;
+  border: none;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 72px;
 }
 
 input {
@@ -92,7 +108,8 @@ textarea {
     margin-bottom: 10px;
   }
 
-  .editIcon {
+  .editIcon,
+  .inprogressIcon {
     margin: 0px 10px 0px 10px !important;
   }
 

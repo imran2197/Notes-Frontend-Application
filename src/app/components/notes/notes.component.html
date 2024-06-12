@@ -27,17 +27,31 @@
     (ngModelChange)="onSearch()"
   />
 </div>
-<div *ngIf="notesData.length > 0" class="note-items-container">
+<div class="tabs-container">
+  <button
+    *ngFor="let tab of tabs"
+    [ngClass]="selectedTab.label === tab.label ? 'active' : ''"
+    (click)="selectedTab = tab; getAllNotes()"
+    [disabled]="tab.label === selectedTab.label"
+  >
+    {{ tab.label }}
+  </button>
+</div>
+<div
+  *ngIf="notesData.length > 0 && filteredNotesData.length > 0"
+  class="note-items-container"
+>
   <ng-container *ngFor="let item of filteredNotesData">
     <app-note-item
       [item]="item"
+      [selectedTab]="selectedTab"
       (updateNotesDataEmitter)="updateNotesDataEmitter()"
       (isLoadingEmitter)="isLoadingEmitter($event)"
     ></app-note-item>
   </ng-container>
 </div>
 <img
-  *ngIf="notesData.length === 0"
+  *ngIf="notesData.length === 0 || filteredNotesData.length === 0"
   class="no-data"
   alt="No Data"
   src="../../../assets/images/nodata.jpg"

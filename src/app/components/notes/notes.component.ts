@@ -18,6 +18,26 @@ export class NotesComponent {
   description: String = '';
   search: String = '';
 
+  selectedTab: any = {
+    label: 'In Progress',
+    field: 'inprogress',
+  };
+
+  tabs = [
+    {
+      label: 'In Progress',
+      field: 'inprogress',
+    },
+    {
+      label: 'Completed',
+      field: 'completed',
+    },
+    {
+      label: 'Recently Deleted',
+      field: 'deleted',
+    },
+  ];
+
   notesData: any = [];
   filteredNotesData: any = [];
 
@@ -31,7 +51,15 @@ export class NotesComponent {
 
   getAllNotes() {
     this.isLoading = true;
-    this.noteService.getAllNotes().subscribe((res: any) => {
+    this.search = '';
+    const payload = {
+      status:
+        this.selectedTab.field === 'deleted'
+          ? 'inprogress'
+          : this.selectedTab.field,
+      deleted: this.selectedTab.field === 'deleted' ? true : false,
+    };
+    this.noteService.getAllNotes(payload).subscribe((res: any) => {
       this.notesData = res.response;
       this.filteredNotesData = JSON.parse(JSON.stringify(this.notesData));
       this.isLoading = false;
@@ -61,6 +89,10 @@ export class NotesComponent {
     this.noteService.createNotes(payload).subscribe((res: any) => {
       if (res.statusCode === 201) {
         this.toasterService.success(res.message);
+        this.selectedTab = {
+          label: 'In Progress',
+          field: 'inprogress',
+        };
         this.title = '';
         this.description = '';
         this.getAllNotes();

@@ -18,7 +18,7 @@
         </button>
         <button
           class="save_button"
-          (click)="onSaveItem()"
+          (click)="onSaveItem('save')"
           [disabled]="
             item.title.trim().length === 0 ||
             item.description.trim().length === 0
@@ -37,14 +37,36 @@
       </div>
       <div class="buttons">
         <img
+          *ngIf="selectedTab.field === 'inprogress'"
+          class="inprogressIcon"
+          alt="Mark Complete Icon"
+          title="Mark as complete"
+          src="../../../assets/images/correct.png"
+          (click)="onSaveItem('complete')"
+        />
+        <img
+          *ngIf="selectedTab.field === 'inprogress'"
           class="editIcon"
           alt="Edit Logo"
+          title="Edit"
           src="../../../assets/images/edit.png"
           (click)="isEditModeEnabled = true"
         />
+        <button
+          class="reopen"
+          *ngIf="selectedTab.field === 'completed'"
+          (click)="onSaveItem('reopen')"
+        >
+          Re-open
+        </button>
         <img
+          *ngIf="
+            selectedTab.field === 'inprogress' ||
+            selectedTab.field === 'completed'
+          "
           class="deleteIcon"
           alt="Delete Logo"
+          title="Delete"
           src="../../../assets/images/delete.png"
           (click)="onDeleteItem()"
         />

@@ -14,6 +14,7 @@ import { ToasterService } from '../../services/toastr.service';
 export class NoteItemComponent {
   isEditModeEnabled: Boolean = false;
   @Input() item: any;
+  @Input() selectedTab: any;
   @Output() updateNotesDataEmitter = new EventEmitter<any>();
   @Output() isLoadingEmitter = new EventEmitter<any>();
 
@@ -24,29 +25,38 @@ export class NoteItemComponent {
 
   ngOnInit() {}
 
-  onSaveItem() {
+  onSaveItem(type: any) {
     this.isLoadingEmitter.emit(true);
     const payload = {
       title: this.item.title,
       description: this.item.description,
+      status:
+        type === 'save'
+          ? this.item.status
+          : type === 'reopen'
+          ? 'inprogress'
+          : 'completed',
+      id: this.item._id,
     };
-    this.noteService
-      .updateNotes(payload, this.item._id)
-      .subscribe((res: any) => {
-        if (res.statusCode === 200) {
-          this.toasterService.success(res.message);
-          this.isEditModeEnabled = false;
-          this.updateNotesDataEmitter.emit();
-        } else {
-          this.toasterService.error(res.message);
-        }
-        this.isLoadingEmitter.emit(false);
-      });
+    this.noteService.updateNotes(payload).subscribe((res: any) => {
+      if (res.statusCode === 200) {
+        this.toasterService.success(res.message);
+        this.isEditModeEnabled = false;
+        this.updateNotesDataEmitter.emit();
+      } else {
+        this.toasterService.error(res.message);
+      }
+      this.isLoadingEmitter.emit(false);
+    });
   }
 
   onDeleteItem() {
     this.isLoadingEmitter.emit(true);
-    this.noteService.deleteNotes(this.item._id).subscribe((res: any) => {
+    const payload = {
+      id: this.item._id,
+      deleted: true,
+    };
+    this.noteService.deleteNotes(payload).subscribe((res: any) => {
       if (res.statusCode === 200) {
         this.toasterService.success(res.message);
         this.updateNotesDataEmitter.emit();

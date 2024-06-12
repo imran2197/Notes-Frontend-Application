@@ -25,6 +25,34 @@
   }
 }
 
+.tabs-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #0171d3;
+  font-size: 20px;
+
+  button {
+    margin: 0;
+    padding: 18px;
+    background-color: #0171d3;
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer !important;
+    opacity: 1 !important;
+  }
+
+  .active {
+    background-color: #fff;
+    color: #0171d3;
+    border-radius: 30px;
+    // cursor: default !important;
+  }
+}
+
 .note-items-container {
   height: 46vh;
   overflow: auto;
@@ -90,6 +118,27 @@ textarea {
   .note-items-container {
     height: 35vh;
     overflow: auto;
+  }
+
+  .tabs-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #0171d3;
+    font-size: 20px;
+
+    button {
+      padding: 11px;
+      font-size: 12px;
+    }
+
+    .active {
+      background-color: #fff;
+      color: #0171d3;
+      border-radius: 30px;
+      // cursor: default !important;
+    }
   }
 
   input,

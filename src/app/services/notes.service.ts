@@ -17,19 +17,19 @@ export class NotesService {
     }
   }
 
-  getAllNotes() {
-    return this.http.get(`${this.baseUrl}/notes`);
+  getAllNotes(payload: any) {
+    return this.http.post(`${this.baseUrl}/notes`, payload);
   }
 
   createNotes(payload: any) {
     return this.http.post(`${this.baseUrl}/notes/create`, payload);
   }
 
-  updateNotes(payload: any, id: any) {
-    return this.http.put(`${this.baseUrl}/notes/${id}`, payload);
+  updateNotes(payload: any) {
+    return this.http.put(`${this.baseUrl}/notes/update`, payload);
   }
 
-  deleteNotes(id: any) {
-    return this.http.delete(`${this.baseUrl}/notes/${id}`);
+  deleteNotes(payload: any) {
+    return this.http.put(`${this.baseUrl}/notes/delete`, payload);
   }
 }
