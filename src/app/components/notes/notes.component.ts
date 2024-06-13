@@ -50,6 +50,7 @@ export class NotesComponent {
   }
 
   getAllNotes() {
+    this.notesData = [];
     this.isLoading = true;
     this.search = '';
     const payload = {

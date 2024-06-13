@@ -51,7 +51,7 @@
   </ng-container>
 </div>
 <img
-  *ngIf="notesData.length === 0 || filteredNotesData.length === 0"
+  *ngIf="notesData.length === 0 || filteredNotesData.length === 0 || isLoading"
   class="no-data"
   alt="No Data"
   src="../../../assets/images/nodata.jpg"
