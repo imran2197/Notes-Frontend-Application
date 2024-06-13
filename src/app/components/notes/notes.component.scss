@@ -48,14 +48,12 @@
   .active {
     background-color: #fff;
     color: #0171d3;
-    border-radius: 30px;
     // cursor: default !important;
   }
 }
 
 .note-items-container {
-  height: 46vh;
-  overflow: auto;
+  margin: 0px 10px;
 }
 
 .search {
@@ -115,11 +113,6 @@ textarea {
     width: 100%;
   }
 
-  .note-items-container {
-    height: 35vh;
-    overflow: auto;
-  }
-
   .tabs-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -131,12 +124,12 @@ textarea {
     button {
       padding: 11px;
       font-size: 12px;
+      border-right: 1px solid #fff;
     }
 
     .active {
       background-color: #fff;
       color: #0171d3;
-      border-radius: 30px;
       // cursor: default !important;
     }
   }

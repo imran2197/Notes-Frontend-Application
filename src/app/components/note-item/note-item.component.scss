@@ -3,6 +3,8 @@
   align-items: center;
   border-bottom: 2px dotted;
   background: #fff;
+  width: 100% !important;
+  overflow: hidden;
 
   #icon {
     width: 40px;
@@ -48,9 +50,30 @@
 }
 
 .single-note-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  margin: 0 0 10px 10px;
+
+  .notesdata {
+    width: 100% !important;
+  }
+  .tex-wrap {
+    word-wrap: break-word !important;
+    width: 100% !important;
+  }
+}
+
+.markascomplete {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  background-color: #fff;
+  border: 1px solid lightgray;
+  padding: 5px 10px 5px 0;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 .editIcon,
@@ -58,6 +81,10 @@
   width: 30px;
   margin: 0px 10px 0px 10px;
   cursor: pointer;
+}
+
+.editIcon {
+  margin: 0px 10px 0px 20px;
 }
 
 .deleteIcon {
@@ -72,13 +99,21 @@
 }
 
 .reopen {
-  background-color: #0171d3;
-  border: none;
-  color: #fff;
-  padding: 10px;
-  border-radius: 5px;
+  background-color: #fff;
+  padding: 12px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
   cursor: pointer;
-  width: 72px;
+  width: 130px;
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  align-items: center;
+
+  img {
+    margin: 0 10px 0 0;
+    width: 20px;
+  }
 }
 
 input {

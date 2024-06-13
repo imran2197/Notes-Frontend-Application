@@ -32,18 +32,23 @@
 
     <div class="single-note-container" *ngIf="!isEditModeEnabled">
       <div class="notesData">
-        <h3>{{ item.title }}</h3>
-        <p>{{ item.description }}</p>
+        <h3 class="tex-wrap">{{ item.title }}</h3>
+        <p class="tex-wrap">{{ item.description }}</p>
       </div>
       <div class="buttons">
-        <img
+        <button
           *ngIf="selectedTab.field === 'inprogress'"
-          class="inprogressIcon"
-          alt="Mark Complete Icon"
-          title="Mark as complete"
-          src="../../../assets/images/correct.png"
           (click)="onSaveItem('complete')"
-        />
+          class="markascomplete"
+        >
+          <img
+            class="inprogressIcon"
+            alt="Mark Complete Icon"
+            title="Mark as complete"
+            src="../../../assets/images/correct.png"
+          />
+          Mark as complete
+        </button>
         <img
           *ngIf="selectedTab.field === 'inprogress'"
           class="editIcon"
@@ -57,6 +62,7 @@
           *ngIf="selectedTab.field === 'completed'"
           (click)="onSaveItem('reopen')"
         >
+          <img src="../../../assets/images/revert.png" alt="revert back" />
           Re-open
         </button>
         <img
