@@ -102,4 +102,16 @@ export class NotesComponent {
       }
     });
   }
+
+  deleteAll() {
+    this.isLoading = true;
+    this.noteService.deleteAllNotes().subscribe((res: any) => {
+      if (res.statusCode === 200) {
+        this.toasterService.success(res.message);
+        this.getAllNotes();
+      } else {
+        this.toasterService.error(res.message);
+      }
+    });
+  }
 }

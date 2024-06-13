@@ -32,4 +32,8 @@ export class NotesService {
   deleteNotes(payload: any) {
     return this.http.put(`${this.baseUrl}/notes/delete`, payload);
   }
+
+  deleteAllNotes() {
+    return this.http.delete(`${this.baseUrl}/notes/deleteAll`);
+  }
 }

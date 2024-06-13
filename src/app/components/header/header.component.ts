@@ -14,6 +14,19 @@ import { Router } from '@angular/router';
 export class HeaderComponent {
   isUserloggedIn: any;
   userDetails: any;
+
+  get name() {
+    let userName = '';
+    const data = this.userDetails.name.split(' ');
+    console.log(data.length);
+    if (data.length >= 2) {
+      userName = data[0] + ' ' + data[1];
+    } else {
+      userName = data[0];
+    }
+    return userName;
+  }
+
   constructor(
     private authService: AuthService,
     private toasterService: ToasterService,

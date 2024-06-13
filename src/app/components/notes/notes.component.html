@@ -37,6 +37,13 @@
     {{ tab.label }}
   </button>
 </div>
+<button
+  class="deleteAll_button"
+  *ngIf="selectedTab.field === 'deleted' && notesData.length > 0"
+  (click)="deleteAll()"
+>
+  Delete All
+</button>
 <div
   *ngIf="notesData.length > 0 && filteredNotesData.length > 0"
   class="note-items-container"

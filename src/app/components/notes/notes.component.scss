@@ -25,6 +25,19 @@
   }
 }
 
+.deleteAll_button {
+  background-color: #c70000;
+  color: #fff;
+  margin: 5px 10px 0 0;
+  float: right;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
 .tabs-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
