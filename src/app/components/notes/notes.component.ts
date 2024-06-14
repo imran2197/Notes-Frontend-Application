@@ -49,7 +49,6 @@ export class NotesComponent {
   }
 
   getAllNotes() {
-    this.notesData = [];
     this.search = '';
     const payload = {
       status:
