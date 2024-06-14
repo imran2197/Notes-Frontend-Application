@@ -42,9 +42,11 @@
 }
 // Spinner css ends
 
-.loader-container {
-  position: fixed;
-  top: 50%;
-  left: 43%;
-  background: rgba(0, 40, 64, 0.5019607843);
+@media only screen and (max-width: 750px) {
+  .loader-container {
+    position: fixed;
+    top: 50%;
+    left: 43%;
+    background: rgba(0, 40, 64, 0.5019607843);
+  }
 }
