@@ -10,6 +10,7 @@ import {
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
 import { HttpinterceptorService } from './services/httpinterceptor.service';
+import { LoadingInterceptorService } from './services/loading-interceptor.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -24,6 +25,11 @@ export const appConfig: ApplicationConfig = {
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpinterceptorService,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptorService,
       multi: true,
     },
   ],

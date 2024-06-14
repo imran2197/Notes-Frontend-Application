@@ -16,7 +16,6 @@ export class NoteItemComponent {
   @Input() item: any;
   @Input() selectedTab: any;
   @Output() updateNotesDataEmitter = new EventEmitter<any>();
-  @Output() isLoadingEmitter = new EventEmitter<any>();
 
   constructor(
     private noteService: NotesService,
@@ -26,7 +25,6 @@ export class NoteItemComponent {
   ngOnInit() {}
 
   onSaveItem(type: any) {
-    this.isLoadingEmitter.emit(true);
     const payload = {
       title: this.item.title,
       description: this.item.description,
@@ -46,12 +44,10 @@ export class NoteItemComponent {
       } else {
         this.toasterService.error(res.message);
       }
-      this.isLoadingEmitter.emit(false);
     });
   }
 
   onDeleteItem() {
-    this.isLoadingEmitter.emit(true);
     const payload = {
       id: this.item._id,
       deleted: true,
@@ -63,7 +59,6 @@ export class NoteItemComponent {
       } else {
         this.toasterService.error(res.message);
       }
-      this.isLoadingEmitter.emit(false);
     });
   }
 }

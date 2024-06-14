@@ -20,7 +20,6 @@ import { ToasterService } from '../../services/toastr.service';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-  isLoading: Boolean = false;
   loginForm: FormGroup = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
@@ -48,7 +47,6 @@ export class LoginComponent {
   }
 
   onLogin() {
-    this.isLoading = true;
     this.authService.login(this.loginForm.value).subscribe(async (res) => {
       if (res.statusCode === 200) {
         await this.getUserDetails();
@@ -57,7 +55,6 @@ export class LoginComponent {
       } else {
         this.toasterService.error(res.message);
       }
-      this.isLoading = false;
     });
   }
 

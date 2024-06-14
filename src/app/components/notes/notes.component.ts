@@ -13,7 +13,6 @@ import { ToasterService } from '../../services/toastr.service';
   styleUrl: './notes.component.scss',
 })
 export class NotesComponent {
-  isLoading: Boolean = false;
   title: String = '';
   description: String = '';
   search: String = '';
@@ -51,7 +50,6 @@ export class NotesComponent {
 
   getAllNotes() {
     this.notesData = [];
-    this.isLoading = true;
     this.search = '';
     const payload = {
       status:
@@ -63,7 +61,6 @@ export class NotesComponent {
     this.noteService.getAllNotes(payload).subscribe((res: any) => {
       this.notesData = res.response;
       this.filteredNotesData = JSON.parse(JSON.stringify(this.notesData));
-      this.isLoading = false;
     });
   }
 
@@ -77,12 +74,7 @@ export class NotesComponent {
     this.getAllNotes();
   }
 
-  isLoadingEmitter(value: any) {
-    this.isLoading = value;
-  }
-
   handleSubmit() {
-    this.isLoading = true;
     const payload = {
       title: this.title,
       description: this.description,
@@ -104,7 +96,6 @@ export class NotesComponent {
   }
 
   deleteAll() {
-    this.isLoading = true;
     this.noteService.deleteAllNotes().subscribe((res: any) => {
       if (res.statusCode === 200) {
         this.toasterService.success(res.message);

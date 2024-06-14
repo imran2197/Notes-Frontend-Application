@@ -10,6 +10,7 @@ export class AuthService {
   baseUrl: String = '';
   isUserLoggedIn = new BehaviorSubject(false);
   userDetails = new BehaviorSubject({});
+  loader = new BehaviorSubject(false);
 
   constructor(private http: HttpClient) {
     if (!isLocalEnv()) {
@@ -18,6 +19,10 @@ export class AuthService {
     } else {
       this.baseUrl = 'http://localhost:8080';
     }
+  }
+
+  setLoader(value: any) {
+    this.loader.next(value);
   }
 
   getUserInfo(): Observable<any> {

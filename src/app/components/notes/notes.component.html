@@ -1,6 +1,3 @@
-<div class="loader-container" *ngIf="isLoading">
-  <div class="loader"></div>
-</div>
 <div class="main">
   <div class="container">
     <h1>Add New Note</h1>
@@ -53,12 +50,11 @@
       [item]="item"
       [selectedTab]="selectedTab"
       (updateNotesDataEmitter)="updateNotesDataEmitter()"
-      (isLoadingEmitter)="isLoadingEmitter($event)"
     ></app-note-item>
   </ng-container>
 </div>
 <img
-  *ngIf="notesData.length === 0 || filteredNotesData.length === 0 || isLoading"
+  *ngIf="notesData.length === 0 || filteredNotesData.length === 0"
   class="no-data"
   alt="No Data"
   src="../../../assets/images/nodata.jpg"
