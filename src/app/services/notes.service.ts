@@ -11,7 +11,7 @@ export class NotesService {
   constructor(private http: HttpClient) {
     if (!isLocalEnv()) {
       this.baseUrl =
-        'https://notes-backend-application-6637e1dd70d6.herokuapp.com/';
+        'https://notes-backend-application-6637e1dd70d6.herokuapp.com';
     } else {
       this.baseUrl = 'http://localhost:8080';
     }
