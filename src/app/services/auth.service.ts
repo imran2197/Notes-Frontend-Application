@@ -14,8 +14,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {
     if (!isLocalEnv()) {
-      this.baseUrl =
-        'https://notes-backend-application-6637e1dd70d6.herokuapp.com';
+      this.baseUrl = 'https://notes-backend-application.vercel.app';
     } else {
       this.baseUrl = 'http://localhost:8080';
     }
