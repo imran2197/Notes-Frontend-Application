@@ -11,6 +11,8 @@ import {
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { ToasterService } from '../../services/toastr.service';
+import { switchMap, tap, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -47,15 +49,45 @@ export class LoginComponent {
   }
 
   onLogin() {
-    this.authService.login(this.loginForm.value).subscribe(async (res) => {
-      if (res.statusCode === 200) {
-        await this.getUserDetails();
-        this.toasterService.success(res.message);
-        this.router.navigate(['/notes']);
-      } else {
-        this.toasterService.error(res.message);
-      }
-    });
+    if (this.loginForm.invalid) {
+      this.toasterService.error('Please enter valid credentials.');
+      return;
+    }
+
+    this.authService
+      .login(this.loginForm.value)
+      .pipe(
+        switchMap((res) => {
+          if (res?.statusCode === 200) {
+            // successful login -> fetch user info
+            return this.authService.getUserInfo().pipe(
+              tap((userRes) => {
+                if (userRes?.statusCode === 200) {
+                  this.authService.userDetails.next(userRes);
+                  this.authService.isUserLoggedIn.next(true);
+                } else {
+                  throw userRes;
+                }
+              })
+            );
+          } else {
+            throw res;
+          }
+        }),
+        catchError((err) => {
+          const msg = err?.message || 'Authentication failed. Check network.';
+          this.toasterService.error(msg);
+          return of(null);
+        })
+      )
+      .subscribe((userFetchResult) => {
+        if (userFetchResult) {
+          this.toasterService.success('Logged in successfully.');
+          // single navigation after success
+          this.router.navigate(['/notes']);
+        }
+        // errors already shown in catchError
+      });
   }
 
   redirectToSignup() {
@@ -63,14 +95,13 @@ export class LoginComponent {
   }
 
   getUserDetails() {
-    this.authService.getUserInfo().subscribe((res) => {
-      if (res.statusCode === 200) {
-        this.authService.userDetails.next(res);
-        this.authService.isUserLoggedIn.next(true);
-        this.router.navigate(['/notes']);
-      } else {
-        this.router.navigate(['/login']);
-      }
-    });
+    return this.authService.getUserInfo().pipe(
+      tap((res) => {
+        if (res?.statusCode === 200) {
+          this.authService.userDetails.next(res);
+          this.authService.isUserLoggedIn.next(true);
+        }
+      })
+    );
   }
 }
